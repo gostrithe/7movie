@@ -7,8 +7,10 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   resolve: {
+    // alias 自定义别名
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)), // @代表src目录
+      '@assets': fileURLToPath(new URL('./src/assets', import.meta.url))
     }
   }
 })

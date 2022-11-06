@@ -1,22 +1,42 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+// import { createWebHashHistory } from 'vue-router'
+
+import FilmView from '../views/FilmView.vue'
 
 const router = createRouter({
+  /* 历史记录模式 */ 
+  // H5模式
+  // 浏览器分不清你是前端路由还是后端路由，以为是后端路由直接访问，发现没有，会报404
+  // 解决办法在服务器添加回退路由，匹配不了，则提供相同页面index.html，定性前端路由，在当前页面跳转锚点
   history: createWebHistory(import.meta.env.BASE_URL),
+  // 哈希模式 
+  // 有#号，在当前页面跳转当前页面的不同地方（页面以内跳转），相当锚记，这部分url不被发送到服务器。影响SEO，SEO不知道#后面的url是不同的内容，以为是同一个页面。
+  // history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView
+      path: '/films',
+      name: 'films',
+      component: FilmView
     },
     {
       path: '/about',
       name: 'about',
+      // 异步加载，懒加载，提高首次加载的性能
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
-    }
+    },
+    {
+      path: '/cinemas',
+      name: 'cinemas',
+      component: () => import('../views/CinemaView.vue')
+    },
+    {
+      path: '/news',
+      name: 'news',
+      component: () => import('../views/NewsView.vue')
+    },
   ]
 })
 
