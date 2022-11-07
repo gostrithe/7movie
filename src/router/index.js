@@ -74,8 +74,8 @@ const router = createRouter({
 
     // 动态路由 配置404
     {
-      // 将匹配所有内容并将其放在'$route.params.pathMatch'下
-      path: '/:pathMatch(.*)*',
+      // 将匹配所有内容并将其放在'$route.params.pathMatch'下，是正则后返回的数组
+      path: '/:pathMatch(.*)*',  // 任意段的任意多段，匹配所有的路由
       name: 'NotFound',
       component: NotFound
       // 将匹配以'/user-'开头的所有内容，并将其放在'$route.params.afterUser'下
