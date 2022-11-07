@@ -1,3 +1,16 @@
 $myGray: #aaa;
 $myLightGray: #eee;
 $myOrange: #ff5f16;
+
+@mixin centeredFlexBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// 混入函数，可以传参与设置默认值
+@mixin textCenter($height: 49px) {
+    text-align: center;
+    height: $height;
+    line-height: $height;
+}

@@ -3,6 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import FilmView from '../views/FilmView.vue'
 
+import NotFound from '../views/NotFound.vue'
+
 const router = createRouter({
   /* 历史记录模式 */ 
   // H5模式
@@ -14,9 +16,29 @@ const router = createRouter({
   // history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      // 重定向，可以根据路径，亦可以根据name
+      path: '/films',
+      redirect: {name: 'nowPlaying'}
+    },
+
+    {
       path: '/films',
       name: 'films',
-      component: FilmView
+      component: FilmView,
+      children: [
+        {
+          // /films/nowPlaying
+          // NowPlaying会渲染在FilmView组件的<router-view>中
+          path: 'nowPlaying',
+          name: 'nowPlaying',
+          component: () => import('../components/films/NowPlaying.vue')
+        },
+        {
+          path: 'comingSoon',
+          name: 'comingSoon',
+          component: () => import('../components/films/ComingSoon.vue')
+        }
+      ]
     },
     {
       path: '/about',
@@ -37,6 +59,28 @@ const router = createRouter({
       name: 'news',
       component: () => import('../views/NewsView.vue')
     },
+
+    {
+      path: '/',
+      redirect: '/films/nowPlaying'
+    },
+
+    // 动态路由
+    {
+      path: '/film/:id(\\d+)',
+      name: 'detail',
+      component: () => import('../components/films/Detail.vue')
+    },
+
+    // 动态路由 配置404
+    {
+      // 将匹配所有内容并将其放在'$route.params.pathMatch'下
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: NotFound
+      // 将匹配以'/user-'开头的所有内容，并将其放在'$route.params.afterUser'下
+      // path: '/user-:afterUser(.*)'
+    }
   ]
 })
 
