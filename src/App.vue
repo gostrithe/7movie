@@ -1,5 +1,17 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
+
+/* 导入并暴露数据 mock/mockData.js */
+// // ES6
+// import mockData from '../mock/data/mockData.json'
+// console.log(mockData);
+
+/* 引入axios */
+// import axios from 'axios'
+// 构造url查询参数
+// const params = new URLSearchParams()
+// params.append('username', 'admin')
+// params.append('password', '123')
 </script>
 
 <template>

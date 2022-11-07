@@ -1,0 +1,8 @@
+{   
+    "/api/movie/playings1": "/playings1",
+    "/api/movie/playings2": "/playings2",
+    "/api/movie/comings": "/comings",
+    "/api/movie/cities": "/cities",
+    "/api/movie/cinema": "/cinemas",
+    "/api/test/jack": "/jack"
+}

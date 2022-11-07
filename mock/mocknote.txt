@@ -1,0 +1,61 @@
+伪服务器与伪数据
+
+使用json-server搭建mock数据服务器
+npm i -g json-server
+
+/* 导入并暴露数据 mock/mockData.js */
+// commentJS
+const mockData = require('./data/mockData.json');
+module.exports = () => {
+    return {
+        mockData
+    };
+};
+
+/* 配置路由表 mock/mockRouter.json */
+{
+    "/api/movie/playings1": "/playings1",
+    "/api/movie/playings2": "/playings2",
+    "/api/movie/comings": "/comings",
+    "/api/movie/cities": "/cities",
+    "/api/movie/cinema": "/cinemas"
+}
+
+/* 启动mock服务器 */
+cd mock
+json-server ./mockData.js -r ./mockRouter.json -p 9000 --watch
+// --router -p监听
+  \{^_^}/ hi!
+
+  Loading ./mockData.js
+  Loading ./mockRouter.json
+  Done
+
+  Resources
+  http://localhost:9000/mockData
+
+  Other routes
+  /api/movie/playings1 -> /playings1
+  /api/movie/playings2 -> /playings2
+  /api/movie/comings -> /comings
+  /api/movie/cities -> /cities
+  /api/movie/cinema -> /cinemas
+  /api/test/jack -> /jack
+
+  Home
+  http://localhost:9000
+
+  Type s + enter at any time to create a snapshot of the database
+  Watching...
+
+
+
+/* 配置快速启动脚本 package.json */
+"scripts": {
+   ...
+  "mock":"json-server ./mock/mockData.js -r ./mock/mockRouter.json -p 9000 --watch"
+},
+
+cd mymovie
+npm run mock
+
