@@ -1,30 +1,27 @@
 <template>
     <div>
-        <h3 class="title">正在上映</h3>
-        <button @click="toDetail">电影详情</button>
-        <!-- 默认跳转，非编程控制 -->
-        <a href="/film/5678">电影详情</a>  
+        <div v-for="item in films" :key="item.filmId">
+            {{ item }}
+        </div>
     </div>
 </template>
 
 <script>
-    // vue3 api 
-    // import { useRouter } from 'vue-router'
+    import { getPlayings } from '@api/movieApi'
 
     export default {
-        methods: {
-            toDetail() {
-                // 编程式导航（代码控制跳转）
-                this.$router.push('/film/1234')
+        data() {
+            return {
+                films: []
             }
         },
 
-        // setup(props) {
-        //     const router = useRouter();
-        //     router.push('/film/123451')
-        //     router.push({path: /film/123451})
-        //     router.push({name: 'film', params: {id: 123451}})
-        // }
+        // 组件挂载时请求数据
+        async mounted() {
+            const films = await getPlayings();
+            // console.log(films);
+            this.films = films
+        },
     }
 </script>
 

@@ -10,7 +10,8 @@ export default defineConfig({
     // alias 自定义别名
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)), // @代表src目录
-      '@assets': fileURLToPath(new URL('./src/assets', import.meta.url))
+      '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
+      '@api': fileURLToPath(new URL('../../api', import.meta.url))
     }
   }
 })
