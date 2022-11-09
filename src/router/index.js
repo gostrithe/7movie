@@ -1,12 +1,12 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 // import { createWebHashHistory } from 'vue-router'
 
-import FilmView from '../views/FilmView.vue'
+import FilmView from '../views/FilmView.vue';
 
-import NotFound from '../views/NotFound.vue'
+import NotFound from '../views/NotFound.vue';
 
 const router = createRouter({
-  /* 历史记录模式 */ 
+  /* 历史记录模式 */
   // H5模式
   // 浏览器分不清你是前端路由还是后端路由，以为是后端路由直接访问，发现没有，会报404
   // 解决办法在服务器添加回退路由，匹配不了，则提供相同页面index.html，定性前端路由，在当前页面跳转锚点
@@ -18,7 +18,7 @@ const router = createRouter({
     {
       // 重定向，可以根据路径，亦可以根据name
       path: '/films',
-      redirect: {name: 'nowPlaying'}
+      redirect: { name: 'nowPlaying' }
     },
 
     {
@@ -62,7 +62,7 @@ const router = createRouter({
 
     {
       path: '/',
-      redirect: '/films/nowPlaying'
+      redirect: '/films'
     },
 
     // 动态路由
@@ -82,6 +82,6 @@ const router = createRouter({
       // path: '/user-:afterUser(.*)'
     }
   ]
-})
+});
 
-export default router
+export default router;

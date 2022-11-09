@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // 可以多个实例，不同实例访问不同服务器
 export const apiInstance = axios.create({
-    baseURL: 'http://localhost:9001/api',
+    baseURL: 'http://localhost:9000',
     timeout: 3000
 });
 

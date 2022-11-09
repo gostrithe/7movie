@@ -1,6 +1,6 @@
 {   
     "/api/movie/playings1": "/playings1",
-    "/api/movie/playings2": "/playings2",
+    "/api/movie/nowPlaying": "/nowPlaying",
     "/api/movie/comings": "/comings",
 
     "/api/movie/cities": "/cities",
